@@ -40,7 +40,7 @@ export function BioSection() {
               {/* คำว่า "Workshops" */}
               <span className="text-black">Dot to Dot</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="font-sans text-xl text-gray-600 max-w-3xl mx-auto">
               ทำความรู้จักกับทีมงาน Dot to Dot ที่เต็มไปด้วยประสบการณ์ที่หลากหลาย
             </p>
           </motion.div>
