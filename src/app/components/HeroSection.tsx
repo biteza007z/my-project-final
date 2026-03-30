@@ -56,17 +56,17 @@ export function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="font-sans text-xl lg:text-2xl text-gray-900 mb-2 font-medium">
+          <p className="font-sans text-xl lg:text-2xl text-gray-900 mb-2 font-medium ml-10, ml-10">
     การเรียนรู้ที่จะพาไป...
   </p>
           {/* หัวข้อ */}
-          <h1 className="font-sans text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-gray-900 whitespace-nowrap">
+          <h1 className="font-sans text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-gray-900 whitespace-nowrap ml-10, ml-10">
             เข้าใจ<span className="text-[#ED1C26]">ตัวเอง</span><br/>
             เข้าใจ<span className="text-[#FCBA02]">ผู้อื่น</span><br/>
             เข้าใจ<span className="text-[#23419B]">ความหลากหลาย</span>
           </h1>
           {/* ข้อความอธิบาย - แก้ไข Tailwind class เพื่อจัดระยะ */}
-          <p className="font-text text-2xl text-gray-900 mb-8 leading-relaxed">
+          <p className="font-text text-2xl text-gray-900 mb-8 leading-relaxed ml-10, ml-10">
             ผ่านการออกแบบประสบการณ์การเรียนรู้<br/>ด้วยเครื่องมือสนุกๆ ที่ออกแบบโดยกระบวนกรมืออาชีพ
           </p>
         </motion.div>
@@ -77,17 +77,17 @@ export function HeroSection() {
           {/*📍 แทรกวงกลม 3 อันตรงจุดนี้ครับ 📍*/}
           
           {/* วงกลมน้ำเงิน (บนซ้าย) */}
-          <div className="absolute top-3 left-3 -translate-x-1/2 -translate-y-1/2 w-22 h-22 bg-[#1D3C9D] rounded-full z-200"></div>
+          <div className="absolute top-3 left-27 -translate-x-1/2 -translate-y-1/2 w-22 h-22 bg-[#1D3C9D] rounded-full z-200"></div>
 
           {/* วงกลมแดงใหญ่ (บนขวา) */}
-          <div className="absolute top-[7%] right-[33%] translate-x-1/2 -translate-y-1/2 w-50 h-50 bg-[#ED1C24] rounded-full z-0"></div>
+          <div className="absolute top-[7%] right-[23%] translate-x-1/2 -translate-y-1/2 w-50 h-50 bg-[#ED1C24] rounded-full z-0"></div>
 
           {/* วงกลมเหลือง (ล่างกลาง) */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-32 h-32 bg-[#FCBA02] rounded-full z-0 -ml-10, -ml-24 "></div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-32 h-32 bg-[#FCBA02] rounded-full z-0 -ml-10, -ml-4 "></div>
 
           {/* กล่อง Carousel ของคุณ (ปรับ w และ z-index เพื่อให้วงกลมอยู่หลัง) */}
           {/* เพิ่ม z-10 เพื่อให้กรอบรูปอยู่เหนือวงกลม z-0 */}
-          <div className="relative w-full lg:w-[70%]  max-w aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-gray-200 z-10">
+          <div className="relative w-full lg:w-[70%]  max-w aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-gray-200 z-10 ml-10, ml-25">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={page}
