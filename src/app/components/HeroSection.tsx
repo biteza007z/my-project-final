@@ -60,13 +60,13 @@ export function HeroSection() {
     การเรียนรู้ที่จะพาไป...
   </p>
           {/* หัวข้อ */}
-          <h1 className="font-sans text-5xl lg:text-7xl font-extrabold leading-tight mb-6 text-gray-900 whitespace-nowrap ml-10, ml-10">
+          <h1 className="font-sans text-5xl lg:text-7xl font-extrabold leading-tight  mb-6 text-gray-900 whitespace-nowrap ml-10, ml-10">
             เข้าใจ<span className="text-[#ED1C26]">ตัวเอง</span><br/>
             เข้าใจ<span className="text-[#FCBA02]">ผู้อื่น</span><br/>
             เข้าใจ<span className="text-[#23419B]">ความหลากหลาย</span>
           </h1>
           {/* ข้อความอธิบาย - แก้ไข Tailwind class เพื่อจัดระยะ */}
-          <p className="font-text text-2xl text-gray-900 mb-8 leading-relaxed ml-10, ml-10">
+          <p className="font-sans text-2xl text-gray-900 mb-8 leading-relaxed ml-10, ml-10 whitespace-nowrap">
             ผ่านการออกแบบประสบการณ์การเรียนรู้<br/>ด้วยเครื่องมือสนุกๆ ที่ออกแบบโดยกระบวนกรมืออาชีพ
           </p>
         </motion.div>
