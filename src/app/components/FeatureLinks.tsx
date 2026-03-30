@@ -60,7 +60,7 @@ export function FeatureLinks() {
               <h3 className={`font-sans text-2xl md:text-3xl font-extrabold mb-2 whitespace-pre-line ${feature.titleColor}`}>
                 {feature.title}
               </h3>
-              <p className="font-text text-lg text-gray-500 whitespace-pre-line">
+              <p className="font-sans text-lg text-gray-500 whitespace-pre-line">
                 {feature.subtitle}
               </p>
             </motion.div>
