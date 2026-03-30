@@ -92,7 +92,7 @@ export function ReviewSection() {
                 <span className="font-sans relative z-10 text-black">รีวิวจากผู้เข้าร่วมเวิร์กชอป</span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="font-sans text-lg text-gray-600 max-w-3xl mx-auto">
               เสียงจากผู้เข้าร่วมเวิร์กชอปของ Dot to Dot จากหลากหลายกิจกรรมของพวกเรา
             </p>
           </motion.div>
