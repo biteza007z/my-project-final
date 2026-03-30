@@ -2,8 +2,27 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// 1. สร้างรูปจำลอง 300 รูป
-const baseImages = [
+// 1. เตรียมพื้นที่สำหรับใส่ไฟล์ภาพจริงของคุณ
+// คุณต้องเตรียม Array ที่มี URL หรือ Path ของรูปภาพทั้งหมด 300 รายการ
+// เช่น [ 'url1', 'url2', '... jusqu'à 300' ] หรือ [ require('./img1.jpg'), require('./img2.jpg'), ... ]
+const myActualImageSources: string[] = [
+  // === ขั้นตอนของคุณ: ===
+  // ค้นหาและวางรายการ URL หรือ Path ของรูปภาพทั้ง 300 รูปของคุณตรงนี้
+  // (เช่น 'https://...', หรือ '/images/...')
+  // อย่าลืมใส่เครื่องหมายคำพูดครอบและลูกศรคั่นแต่ละรายการ
+
+  /* === วาง URL หรือ Path รูปภาพทั้ง 300 รูปตรงนี้ === */
+  
+  // -- ตัวอย่างข้อมูลสมมติ (เมื่อคุณวางรูปจริง ตัวอย่างนี้จะถูกลบออก) --
+  // 'https://via.placeholder.com/800x800.png?text=Image+1',
+  // 'https://via.placeholder.com/800x800.png?text=Image+2',
+  // ... และต่อๆ ไปจนครบ 300 รูป
+  // -----------------------------------------------------------------
+];
+
+// Fallback logic: ป้องกันโค้ดพังในระหว่างที่คุณยังใส่รูปไม่ครบ 300 รูป
+// (จะใช้รูป Unsplash จำลอง 10 รูปแรกมาวนซ้ำให้เต็ม 300 ช่องแทน ถ้า Array ของคุณยังว่างอยู่)
+const unsplashMockFallback = [
   'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800',
   'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
   'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800',
@@ -16,9 +35,14 @@ const baseImages = [
   'https://images.unsplash.com/photo-1758270705317-3ef6142d306f?w=800',
 ];
 
-const reviewImages = Array.from({ length: 300 }).map((_, idx) => ({
+const imageSourcesToUse = myActualImageSources.length > 0 
+  ? myActualImageSources 
+  : Array.from({ length: 300 }).map((_, idx) => unsplashMockFallback[idx % unsplashMockFallback.length]);
+
+// สร้างรายการรูปภาพสำหรับ Grid (300 รูป ไม่ซ้ำกัน ถ้าคุณวางข้อมูลครบ)
+const reviewImages = imageSourcesToUse.slice(0, 300).map((src, idx) => ({
   id: idx,
-  src: baseImages[idx % baseImages.length],
+  src: src,
   alt: `Review ${idx + 1}`
 }));
 
@@ -50,8 +74,8 @@ export function ReviewSection() {
 
   return (
     <>
-      <section id="reviews" className="py-20 bg-transparent relative">
-        <div className="max-w-7xl mx-auto px-6 mb-12">
+      <section id="reviews" className="py-10 bg-transparent relative flex flex-col justify-center h-screen min-h-screen">
+        <div className="max-w-7xl mx-auto px-6 mb-6 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -59,63 +83,54 @@ export function ReviewSection() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-           <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 flex items-center justify-center gap-x-4">
-              
-              {/* Container สำหรับ "Our" และวงกลมพื้นหลัง */}
+           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 flex items-center justify-center gap-x-4">
               <span className="relative inline-block leading-none">
-                {/* วงกลมสีเหลืองพื้นหลัง ปรับตำแหน่งด้วย absolute และ translate */}
                 <span 
-                  className="absolute -left-4.5 -top-3 w-16 h-16 md:w-20 md:h-20 bg-[#FCBA02] rounded-full z-0 opacity-100"
+                  className="absolute -left-4.5 -top-3 w-14 h-14 md:w-16 md:h-16 bg-[#FCBA02] rounded-full z-0 opacity-100"
                   aria-hidden="true"
                 ></span>
-                
-                {/* คำว่า "Our" ต้องอยู่ z-10 เพื่อทับวงกลม */}
                 <span className="font-sans relative z-10 text-black">รีวิวจากผู้เข้าร่วมเวิร์กชอป</span>
               </span>
-
-              {/* คำว่า "Workshops" */}
-              <span className="text-black"></span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               เสียงจากผู้เข้าร่วมเวิร์กชอปของ Dot to Dot จากหลากหลายกิจกรรมของพวกเรา
             </p>
           </motion.div>
         </div>
 
-        <div className="w-full overflow-x-auto hide-scrollbar">
-          {/* แก้ไข: ย้ายแอนิเมชันตอนเลื่อนจอมาไว้ที่กล่องคลุมกล่องเดียว เพื่อลดภาระเบราว์เซอร์ */}
+        {/* ส่วนแสดงรูป จัด Grid แบบ 25x12 (300 ช่อง) */}
+        <div className="w-full max-w-[100rem] mx-auto px-4 sm:px-6 flex-grow flex flex-col justify-center pb-8" style={{ maxHeight: '75vh' }}>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="min-w-max mx-auto p-16" 
+            className="w-full h-full" 
             style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(30, minmax(60px, 80px))', 
-              gridTemplateRows: 'repeat(10, minmax(60px, 80px))',
-              gap: '6px' 
+              // 25 คอลัมน์ และ 12 แถว
+              gridTemplateColumns: 'repeat(25, 1fr)', 
+              gridTemplateRows: 'repeat(12, 1fr)',
+              gap: '4px'
             }}
           >
             {reviewImages.map((img, index) => (
               <motion.div
                 key={img.id}
                 onClick={() => setSelectedIndex(index)}
-                className="relative cursor-pointer aspect-square rounded-md overflow-hidden bg-gray-800"
-                
-                // รูปทั้ง 300 จะตอบสนองแค่ตอนโดน Hover เท่านั้น
+                className="relative cursor-pointer rounded overflow-hidden bg-gray-800 w-full h-full"
                 whileHover={{ 
-                  scale: 2.2, 
+                  scale: 2.5, 
                   zIndex: 50, 
-                  borderRadius: "12px",
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5)"
+                  borderRadius: "8px",
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.6)"
                 }}
-                transition={{ duration: 0.15 }} // ปรับความไวให้ติดนิ้ว ไม่หน่วง
+                transition={{ duration: 0.15 }}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  loading="lazy" // โหลดรูปเท่าที่แสดงผล ช่วยลดอาการกระตุกได้มาก
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -124,7 +139,7 @@ export function ReviewSection() {
         </div>
       </section>
 
-      {/* Lightbox / รูปใหญ่ตอนคลิก */}
+      {/* Lightbox / รูปใหญ่ตอนคลิก (คงเดิม) */}
       <AnimatePresence>
         {selectedIndex !== null && (
           <motion.div
