@@ -42,7 +42,7 @@ export function ContactSection() {
               {/* คำว่า "Workshops" */}
               <span className="text-black"></span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="font-sans text-xl text-gray-600 max-w-3xl mx-auto">
               หากคุณมีข้อสงสัย อยากแลกเปลี่ยน หรืออยากปรึกษาพวกเราถึง <br />
 การออกแบบกระบวนการเรียนรู้ ติดต่อหาเราได้ทันที
             </p>
