@@ -145,7 +145,7 @@ export function PortfolioSection() {
               <span className="relative inline-block leading-none">
                 {/* วงกลมสีเหลืองพื้นหลัง ปรับตำแหน่งด้วย absolute และ translate */}
                 <span 
-                  className="absolute -left-4.5 -top-3 w-16 h-16 md:w-20 md:h-20 bg-[#10b981] rounded-full z-0 opacity-100"
+                  className="absolute -left-4.5 -top-3 w-16 h-16 md:w-20 md:h-20 bg-[#0B9B55] rounded-full z-0 opacity-100"
                   aria-hidden="true"
                 ></span>
                 
